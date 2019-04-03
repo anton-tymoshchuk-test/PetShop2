@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="410.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="410.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
+   <children>
+      <Button fx:id="addUser" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#addUser" text="Add" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Button fx:id="resetUser" layoutX="52.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#resetUser" text="Reset" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="107.0" layoutY="18.0" text="Name" />
+      <Label layoutX="173.0" layoutY="18.0" text="Price" />
+      <Label fx:id="name1" layoutX="114.0" layoutY="43.0" text="Label" />
+      <Label fx:id="price1" layoutX="177.0" layoutY="43.0" text="Label" />
+      <Button fx:id="button1" layoutX="232.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#buyClick" text="Buy" />
+      <Label fx:id="name2" layoutX="114.0" layoutY="74.0" text="Label" />
+      <Label fx:id="price2" layoutX="177.0" layoutY="74.0" text="Label" />
+      <Button fx:id="button2" layoutX="232.0" layoutY="70.0" mnemonicParsing="false" onMouseClicked="#buyClick" text="Buy" />
+      <Label fx:id="name3" layoutX="114.0" layoutY="105.0" text="Label" />
+      <Label fx:id="price3" layoutX="177.0" layoutY="105.0" text="Label" />
+      <Button fx:id="button3" layoutX="232.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#buyClick" text="Buy" />
+      <Label fx:id="name4" layoutX="114.0" layoutY="138.0" text="Label" />
+      <Label fx:id="price4" layoutX="177.0" layoutY="138.0" text="Label" />
+      <Button fx:id="button4" layoutX="232.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#buyClick" text="Buy" />
+      <Label fx:id="name5" layoutX="114.0" layoutY="170.0" text="Label" />
+      <Label fx:id="price5" layoutX="177.0" layoutY="170.0" text="Label" />
+      <Button fx:id="button5" layoutX="232.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#buyClick" text="Buy" />
+      <Label fx:id="name6" layoutX="114.0" layoutY="201.0" text="Label" />
+      <Label fx:id="price6" layoutX="177.0" layoutY="201.0" text="Label" />
+      <Button fx:id="button6" layoutX="232.0" layoutY="197.0" mnemonicParsing="false" onMouseClicked="#buyClick" text="Buy" />
+   </children>
+</AnchorPane>
