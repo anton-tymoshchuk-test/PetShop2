@@ -2,14 +2,18 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MainMenu {
 
-    private ArrayList<Button> buttons = new ArrayList<Button>();
     private ArrayList<Label> names = new ArrayList<Label>();
     private ArrayList<Label> prices = new ArrayList<Label>();
 
@@ -81,17 +85,63 @@ public class MainMenu {
 
     @FXML
     void addUser(MouseEvent event) {
+        AppState.addNextWorker = true;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogInWindowFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage logInWindow = new Stage();
+            logInWindow.setScene(scene);
+            logInWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    @FXML
+    void buyClick1(MouseEvent event) {
 
     }
 
     @FXML
-    void buyClick(MouseEvent event) {
-        
+    void buyClick2(MouseEvent event) {
+
+    }
+
+    @FXML
+    void buyClick3(MouseEvent event) {
+
+    }
+
+    @FXML
+    void buyClick4(MouseEvent event) {
+
+    }
+
+    @FXML
+    void buyClick5(MouseEvent event) {
+
+    }
+
+    @FXML
+    void buyClick6(MouseEvent event) {
+
     }
 
     @FXML
     void resetUser(MouseEvent event) {
-
+        AppState.addNextWorker = false;
+        AppState.deleteWorker = true;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogInWindowFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage logInWindow = new Stage();
+            logInWindow.setScene(scene);
+            logInWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
@@ -130,5 +180,17 @@ public class MainMenu {
         prices.add(price4);
         prices.add(price5);
         prices.add(price6);
+
+        Database.connect();
+        Database.create();
+
+        List<Animal> animals = Database.getAnimals(null);
+        for (int i = 0; i < 6; i++) {
+            names.get(i).setText(animals.get(i).getType());
+            prices.get(i).setText((String.valueOf(animals.get(i).getPrice())));
+        }
+        Database.close();
+
+        AppState.logInWindow.close();
     }
 }

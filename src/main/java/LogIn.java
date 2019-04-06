@@ -2,9 +2,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,31 +27,38 @@ public class LogIn {
     private TextField passwordText;
 
     @FXML
-    void ButtonOKClick(MouseEvent event)
-    {
+    void ButtonOKClick(MouseEvent event) {
         Database.connect();
         Database.create();
         List<Worker> workers = Database.getWorkers(null);
 
-        if (!workers.isEmpty())
+        if (AppState.addNextWorker == true) {
+            Database.insertData("Workers", new Object[]{logInText.getText(), logInText.getText(), passwordText.getText()});
+            AppState.logInWindow.close();
+        }
+        else if (AppState.deleteWorker==true)
         {
-            for (int i=0;i<workers.size();i++)
-            {
-                if (workers.get(i).getUsername().equals(logInText.getText()))
-                {
-                    if (workers.get(i).getPassword().equals(passwordText.getText()))
-                    {
-                        try {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenuFXML.fxml"));
-                            AnchorPane anchorPane = fxmlLoader.load();
-                            Scene scene=new Scene(anchorPane);
-                            Stage mainMenuWindow = new Stage();
-                            mainMenuWindow.setScene(scene);
-                            mainMenuWindow.show();
-                        }
-                        catch (Exception exception)
-                        {
-                            exception.printStackTrace();
+
+        }
+        else {
+            if (!workers.isEmpty()) {
+                for (int i = 0; i < workers.size(); i++) {
+                    if (workers.get(i).getUsername().equals(logInText.getText())) {
+                        if (workers.get(i).getPassword().equals(passwordText.getText())) {
+                            try {
+                                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenuFXML.fxml"));
+                                AnchorPane anchorPane = fxmlLoader.load();
+                                Scene scene = new Scene(anchorPane);
+                                Stage mainMenuWindow = new Stage();
+                                mainMenuWindow.setScene(scene);
+                                mainMenuWindow.show();
+
+                                AppState.mainMenuWindow = mainMenuWindow;
+                                AppState.mainMenuShown = true;
+                                AppState.addNextWorker = true;
+                            } catch (Exception exception) {
+                                exception.printStackTrace();
+                            }
                         }
                     }
                 }

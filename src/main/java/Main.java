@@ -19,6 +19,7 @@ public class Main extends Application
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
+            AppState.logInWindow = primaryStage;
         }
         catch (Exception exception)
         {
@@ -27,6 +28,35 @@ public class Main extends Application
     }
 
     public static void main(String[] args) {
+//        Database.connect();
+//        Database.create();
+//
+//        Database.insertData("Animals", new Object[]{"Dog", 145.99});
+//        Database.insertData("Animals", new Object[]{"Owl", 273.99});
+//        Database.insertData("Animals", new Object[]{"Raccoon", 119.99});
+//        Database.insertData("Animals", new Object[]{"Cat", 127.99});
+//        Database.insertData("Animals", new Object[]{"Dog", 145.99});
+//        Database.insertData("Animals", new Object[]{"Owl", 273.99});
+//        Database.insertData("Animals", new Object[]{"Raccoon", 119.99});
+//        Database.insertData("Animals", new Object[]{"Cat", 127.99});
+//        Database.insertData("Animals", new Object[]{"Dog", 145.99});
+//        Database.insertData("Animals", new Object[]{"Owl", 273.99});
+//        Database.insertData("Animals", new Object[]{"Raccoon", 119.99});
+//        Database.insertData("Animals", new Object[]{"Cat", 127.99});
+//        Database.insertData("Animals", new Object[]{"Dog", 145.99});
+//        Database.insertData("Animals", new Object[]{"Owl", 273.99});
+//        Database.insertData("Animals", new Object[]{"Raccoon", 119.99});
+//        Database.insertData("Animals", new Object[]{"Cat", 127.99});
+//        Database.insertData("Animals", new Object[]{"Dog", 145.99});
+//        Database.insertData("Animals", new Object[]{"Owl", 273.99});
+//        Database.insertData("Animals", new Object[]{"Raccoon", 119.99});
+//        Database.insertData("Animals", new Object[]{"Cat", 127.99});
+//        Database.insertData("Animals", new Object[]{"Dog", 145.99});
+//        Database.insertData("Animals", new Object[]{"Owl", 273.99});
+//        Database.insertData("Animals", new Object[]{"Raccoon", 119.99});
+//
+//        Database.close();
+
         launch(args);
 
         //List<Animal> animals = new ArrayList<Animal>();
@@ -60,7 +90,6 @@ public class Main extends Application
         //As result - executes string INSERT INTO `Workers` (`Name`, `Username`, `Password`) VALUES ('John Smith', 'johnsmith', 'john012');
         //Database.insertData("Workers", new Object[]{"John Smith", "johnsmith", "john012"});
         //As result - executes string INSERT INTO `Animals` (`Type`, `Price`) VALUES ('Cat', 127.99);
-        //Database.insertData("Animals", new Object[]{"Cat", 127.99});
         //returns all animals
         //animals = Database.getAnimals(null);
         //or with "where" statement
