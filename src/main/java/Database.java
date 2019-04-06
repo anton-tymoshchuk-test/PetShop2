@@ -34,6 +34,8 @@ public class Database {
             statement.execute("CREATE TABLE IF NOT EXISTS `Workers` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Username` TEXT UNIQUE,`Password` TEXT );");
             statement.execute("CREATE TABLE IF NOT EXISTS `Animals` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Type` TEXT,`Price` REAL );");
             statement.execute("CREATE TABLE IF NOT EXISTS `Receipts`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Price` REAL,`Date` TEXT,`Seller` TEXT )");
+            Database.insertData("Workers", new Object[]{"John Smith", "johnsmith", "john012"});
+            Database.insertData("Animals", new Object[]{"Cat", 156.12});
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -118,11 +120,19 @@ public class Database {
 
 
     public static void deleteWorker(String workerUsername) {
-
+        try {
+            statement.execute(String.format("DELETE FROM `Workers` WHERE Username = %s;", workerUsername));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void deleteAnimal(int id) {
-
+        try {
+            statement.execute(String.format("DELETE FROM `Animals` WHERE ID = %d;", id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
