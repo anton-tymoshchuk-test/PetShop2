@@ -41,6 +41,10 @@ public class Main {
         animals = Database.getAnimals("ID = 1");
         System.out.println(animals.get(0).getType());
 
+        workers = Database.getWorkers(null);
+        //Створюємо чек
+        Database.makeReceipt(animals.get(0).getType(), animals.get(0).getPrice(), workers.get(0).getUsername());
+
         Database.close();
     }
 }

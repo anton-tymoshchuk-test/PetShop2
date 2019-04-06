@@ -3,10 +3,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 public class Database {
@@ -33,8 +31,9 @@ public class Database {
     public static void create() {
         try {
             statement = conn.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS `Workers` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Username` TEXT,`Password` TEXT );");
+            statement.execute("CREATE TABLE IF NOT EXISTS `Workers` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Username` TEXT UNIQUE,`Password` TEXT );");
             statement.execute("CREATE TABLE IF NOT EXISTS `Animals` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Type` TEXT,`Price` REAL );");
+            statement.execute("CREATE TABLE IF NOT EXISTS `Receipts`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Price` REAL,`Date` TEXT,`Seller` TEXT )");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -89,9 +88,14 @@ public class Database {
         return workers;
     }
 
+    public static void makeReceipt(String name, double price, String sellerUsername) {
+        //`Name`, `Price`, `Date`, `Seller`
+        insertData("Receipts", new Object[]{name, price, new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime()), sellerUsername});
+    }
     private static Map valuesTable = new HashMap() {{
         put("Animals", "`Type`, `Price`");
         put("Workers", "`Name`, `Username`, `Password`");
+        put("Receipts", "`Name`, `Price`, `Date`, `Seller`");
     }};
 
     public static void insertData(String tableName, Object[] values) {
