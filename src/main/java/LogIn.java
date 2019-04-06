@@ -38,7 +38,8 @@ public class LogIn {
         }
         else if (AppState.deleteWorker==true)
         {
-
+            //Database delete worker
+            AppState.logInWindow.close();
         }
         else {
             if (!workers.isEmpty()) {
@@ -56,6 +57,7 @@ public class LogIn {
                                 AppState.mainMenuWindow = mainMenuWindow;
                                 AppState.mainMenuShown = true;
                                 AppState.addNextWorker = true;
+                                AppState.currentWorkerName = logInText.getText();
                             } catch (Exception exception) {
                                 exception.printStackTrace();
                             }

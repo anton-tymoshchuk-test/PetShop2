@@ -100,32 +100,122 @@ public class MainMenu {
 
     @FXML
     void buyClick1(MouseEvent event) {
+        //Database delete animal
 
+        AppState.checkNumber++;
+        AppState.productName = name1.getText();
+        AppState.price = Double.valueOf(price1.getText());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage checkWindow = new Stage();
+            checkWindow.setScene(scene);
+            checkWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     void buyClick2(MouseEvent event) {
+        //Database delete animal
 
+        AppState.checkNumber++;
+        AppState.productName = name2.getText();
+        AppState.price = Double.valueOf(price2.getText());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage checkWindow = new Stage();
+            checkWindow.setScene(scene);
+            checkWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     void buyClick3(MouseEvent event) {
+        //Database delete animal
 
+        AppState.checkNumber++;
+        AppState.productName = name3.getText();
+        AppState.price = Double.valueOf(price3.getText());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage checkWindow = new Stage();
+            checkWindow.setScene(scene);
+            checkWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     void buyClick4(MouseEvent event) {
+        //Database delete animal
 
+        AppState.checkNumber++;
+        AppState.productName = name4.getText();
+        AppState.price = Double.valueOf(price4.getText());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage checkWindow = new Stage();
+            checkWindow.setScene(scene);
+            checkWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     void buyClick5(MouseEvent event) {
+        //Database delete animal
 
+        AppState.checkNumber++;
+        AppState.productName = name5.getText();
+        AppState.price = Double.valueOf(price5.getText());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage checkWindow = new Stage();
+            checkWindow.setScene(scene);
+            checkWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     void buyClick6(MouseEvent event) {
+        //Database delete animal
 
+        AppState.checkNumber++;
+        AppState.productName = name6.getText();
+        AppState.price = Double.valueOf(price6.getText());
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+            Stage checkWindow = new Stage();
+            checkWindow.setScene(scene);
+            checkWindow.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
