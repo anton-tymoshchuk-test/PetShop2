@@ -1,4 +1,6 @@
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,6 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class MainMenu {
+
+    private ArrayList<Button> buttons = new ArrayList<Button>();
+    private ArrayList<Label> names = new ArrayList<Label>();
+    private ArrayList<Label> prices = new ArrayList<Label>();
 
     @FXML
     private ResourceBundle resources;
@@ -80,7 +86,7 @@ public class MainMenu {
 
     @FXML
     void buyClick(MouseEvent event) {
-
+        
     }
 
     @FXML
@@ -111,5 +117,18 @@ public class MainMenu {
         assert price6 != null : "fx:id=\"price6\" was not injected: check your FXML file 'Untitled'.";
         assert button6 != null : "fx:id=\"button6\" was not injected: check your FXML file 'Untitled'.";
 
+        names.add(name1);
+        names.add(name2);
+        names.add(name3);
+        names.add(name4);
+        names.add(name5);
+        names.add(name6);
+
+        prices.add(price1);
+        prices.add(price2);
+        prices.add(price3);
+        prices.add(price4);
+        prices.add(price5);
+        prices.add(price6);
     }
 }
