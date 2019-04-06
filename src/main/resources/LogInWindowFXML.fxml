@@ -6,9 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="200.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="200.0" prefWidth="300.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logIn">
-   <children>
+<AnchorPane maxHeight="200.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="200.0" prefWidth="300.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogIn">
       <Label layoutX="119.0" layoutY="14.0" prefHeight="35.0" prefWidth="63.0" text="LogIn" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="24.0" />
@@ -21,6 +19,5 @@
          </font>
       </Label>
       <TextField fx:id="passwordText" layoutX="76.0" layoutY="109.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="109.0" />
-      <Button layoutX="134.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#ButtonOKClick" text="OK" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="147.0" />
-   </children>
+      <Button layoutX="95.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#ButtonOKClick" prefHeight="35.0" prefWidth="111.0" text="OK" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="151.0" />
 </AnchorPane>
