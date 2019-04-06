@@ -92,6 +92,7 @@ public class Database {
         //`Name`, `Price`, `Date`, `Seller`
         insertData("Receipts", new Object[]{name, price, new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime()), sellerUsername});
     }
+
     private static Map valuesTable = new HashMap() {{
         put("Animals", "`Type`, `Price`");
         put("Workers", "`Name`, `Username`, `Password`");
@@ -114,6 +115,17 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+
+    public static void deleteWorker(String workerUsername) {
+
+    }
+
+    public static void deleteAnimal(int id) {
+
+    }
+
+
     //statement if null returns * else appends after statement "where"
 //    public static Object getTableData(String tableName,String statement) throws ClassNotFoundException, SQLException, IllegalAccessException, InstantiationException {
 //        resSet = statement.executeQuery("SELECT * FROM users");

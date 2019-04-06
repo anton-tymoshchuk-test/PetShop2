@@ -1,7 +1,6 @@
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.sun.prism.shader.DrawPgram_RadialGradient_PAD_AlphaTest_Loader;

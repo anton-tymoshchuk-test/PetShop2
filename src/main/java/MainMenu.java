@@ -16,6 +16,7 @@ public class MainMenu {
 
     private ArrayList<Label> names = new ArrayList<Label>();
     private ArrayList<Label> prices = new ArrayList<Label>();
+    private List<Animal> loadedAnimals;
 
     @FXML
     private ResourceBundle resources;
@@ -86,6 +87,7 @@ public class MainMenu {
     @FXML
     void addUser(MouseEvent event) {
         AppState.addNextWorker = true;
+        AppState.deleteWorker = false;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogInWindowFXML.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
@@ -98,13 +100,11 @@ public class MainMenu {
         }
     }
 
-    @FXML
-    void buyClick1(MouseEvent event) {
-        //Database delete animal
-
-        AppState.checkNumber++;
-        AppState.productName = name1.getText();
-        AppState.price = Double.valueOf(price1.getText());
+    private void showCheckWindow() {
+        Database.connect();
+        Database.create();
+        Database.deleteAnimal(AppState.productId);
+        Database.close();
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
@@ -113,109 +113,106 @@ public class MainMenu {
             Stage checkWindow = new Stage();
             checkWindow.setScene(scene);
             checkWindow.show();
+            AppState.checkWindow = checkWindow;
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+    }
+
+    @FXML
+    void buyClick1(MouseEvent event) {
+        if (name1.getText().equals("-") && price1.getText().equals("-"))
+            return;
+
+        AppState.checkNumber++;
+        AppState.productId = loadedAnimals.get(0).getId();
+        AppState.productName = name1.getText();
+        AppState.price = Double.valueOf(price1.getText());
+
+        showCheckWindow();
+
+        name1.setText("-");
+        price1.setText("-");
     }
 
     @FXML
     void buyClick2(MouseEvent event) {
-        //Database delete animal
+        if (name2.getText().equals("-") && price2.getText().equals("-"))
+            return;
 
         AppState.checkNumber++;
+        AppState.productId = loadedAnimals.get(1).getId();
         AppState.productName = name2.getText();
         AppState.price = Double.valueOf(price2.getText());
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
-            AnchorPane anchorPane = fxmlLoader.load();
-            Scene scene = new Scene(anchorPane);
-            Stage checkWindow = new Stage();
-            checkWindow.setScene(scene);
-            checkWindow.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        showCheckWindow();
+
+        name2.setText("-");
+        price2.setText("-");
     }
 
     @FXML
     void buyClick3(MouseEvent event) {
-        //Database delete animal
+        if (name3.getText().equals("-") && price3.getText().equals("-"))
+            return;
 
         AppState.checkNumber++;
+        AppState.productId = loadedAnimals.get(2).getId();
         AppState.productName = name3.getText();
         AppState.price = Double.valueOf(price3.getText());
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
-            AnchorPane anchorPane = fxmlLoader.load();
-            Scene scene = new Scene(anchorPane);
-            Stage checkWindow = new Stage();
-            checkWindow.setScene(scene);
-            checkWindow.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        showCheckWindow();
+
+        name3.setText("-");
+        price3.setText("-");
     }
 
     @FXML
     void buyClick4(MouseEvent event) {
-        //Database delete animal
+        if (name4.getText().equals("-") && price4.getText().equals("-"))
+            return;
 
         AppState.checkNumber++;
+        AppState.productId = loadedAnimals.get(3).getId();
         AppState.productName = name4.getText();
         AppState.price = Double.valueOf(price4.getText());
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
-            AnchorPane anchorPane = fxmlLoader.load();
-            Scene scene = new Scene(anchorPane);
-            Stage checkWindow = new Stage();
-            checkWindow.setScene(scene);
-            checkWindow.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        showCheckWindow();
+
+        name4.setText("-");
+        price4.setText("-");
     }
 
     @FXML
     void buyClick5(MouseEvent event) {
-        //Database delete animal
+        if (name5.getText().equals("-") && price5.getText().equals("-"))
+            return;
 
         AppState.checkNumber++;
+        AppState.productId = loadedAnimals.get(4).getId();
         AppState.productName = name5.getText();
         AppState.price = Double.valueOf(price5.getText());
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
-            AnchorPane anchorPane = fxmlLoader.load();
-            Scene scene = new Scene(anchorPane);
-            Stage checkWindow = new Stage();
-            checkWindow.setScene(scene);
-            checkWindow.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        showCheckWindow();
+
+        name5.setText("-");
+        price5.setText("-");
     }
 
     @FXML
     void buyClick6(MouseEvent event) {
-        //Database delete animal
+        if (name6.getText().equals("-") && price6.getText().equals("-"))
+            return;
 
+        AppState.productId = loadedAnimals.get(5).getId();
         AppState.checkNumber++;
         AppState.productName = name6.getText();
         AppState.price = Double.valueOf(price6.getText());
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckFormFXML.fxml"));
-            AnchorPane anchorPane = fxmlLoader.load();
-            Scene scene = new Scene(anchorPane);
-            Stage checkWindow = new Stage();
-            checkWindow.setScene(scene);
-            checkWindow.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        showCheckWindow();
+
+        name6.setText("-");
+        price6.setText("-");
     }
 
     @FXML
@@ -274,10 +271,10 @@ public class MainMenu {
         Database.connect();
         Database.create();
 
-        List<Animal> animals = Database.getAnimals(null);
+        loadedAnimals = Database.getAnimals(null);
         for (int i = 0; i < 6; i++) {
-            names.get(i).setText(animals.get(i).getType());
-            prices.get(i).setText((String.valueOf(animals.get(i).getPrice())));
+            names.get(i).setText(loadedAnimals.get(i).getType());
+            prices.get(i).setText((String.valueOf(loadedAnimals.get(i).getPrice())));
         }
         Database.close();
 

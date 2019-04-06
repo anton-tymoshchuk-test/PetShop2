@@ -1,5 +1,4 @@
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,13 +34,10 @@ public class LogIn {
         if (AppState.addNextWorker == true) {
             Database.insertData("Workers", new Object[]{logInText.getText(), logInText.getText(), passwordText.getText()});
             AppState.logInWindow.close();
-        }
-        else if (AppState.deleteWorker==true)
-        {
-            //Database delete worker
+        } else if (AppState.deleteWorker == true) {
+            Database.deleteWorker(logInText.getText());
             AppState.logInWindow.close();
-        }
-        else {
+        } else {
             if (!workers.isEmpty()) {
                 for (int i = 0; i < workers.size(); i++) {
                     if (workers.get(i).getUsername().equals(logInText.getText())) {
