@@ -28,8 +28,8 @@ public class LogIn {
     @FXML
     void ButtonOKClick(MouseEvent event) {
         Database.connect();
-        Database.create();
-        List<Worker> workers = Database.getWorkers(null);
+        //Database.create();
+
 
         if (AppState.addNextWorker == true) {
             Database.insertData("Workers", new Object[]{logInText.getText(), logInText.getText(), passwordText.getText()});
@@ -38,27 +38,22 @@ public class LogIn {
             Database.deleteWorker(logInText.getText());
             AppState.logInWindow.close();
         } else {
+            List<Worker> workers = Database.getWorkers(String.format("Username = '%s' and Password = '%s'", logInText.getText(), passwordText.getText()));
             if (!workers.isEmpty()) {
-                for (int i = 0; i < workers.size(); i++) {
-                    if (workers.get(i).getUsername().equals(logInText.getText())) {
-                        if (workers.get(i).getPassword().equals(passwordText.getText())) {
-                            try {
-                                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenuFXML.fxml"));
-                                AnchorPane anchorPane = fxmlLoader.load();
-                                Scene scene = new Scene(anchorPane);
-                                Stage mainMenuWindow = new Stage();
-                                mainMenuWindow.setScene(scene);
-                                mainMenuWindow.show();
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenuFXML.fxml"));
+                    AnchorPane anchorPane = fxmlLoader.load();
+                    Scene scene = new Scene(anchorPane);
+                    Stage mainMenuWindow = new Stage();
+                    mainMenuWindow.setScene(scene);
+                    mainMenuWindow.show();
 
-                                AppState.mainMenuWindow = mainMenuWindow;
-                                AppState.mainMenuShown = true;
-                                AppState.addNextWorker = true;
-                                AppState.currentWorkerName = logInText.getText();
-                            } catch (Exception exception) {
-                                exception.printStackTrace();
-                            }
-                        }
-                    }
+                    AppState.mainMenuWindow = mainMenuWindow;
+                    AppState.mainMenuShown = true;
+                    AppState.addNextWorker = true;
+                    AppState.currentWorkerName = logInText.getText();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
                 }
             }
         }

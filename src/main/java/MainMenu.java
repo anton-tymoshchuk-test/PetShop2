@@ -102,7 +102,7 @@ public class MainMenu {
 
     private void showCheckWindow() {
         Database.connect();
-        Database.create();
+        //Database.create();
         Database.deleteAnimal(AppState.productId);
         Database.close();
 
@@ -269,14 +269,16 @@ public class MainMenu {
         prices.add(price6);
 
         Database.connect();
-        Database.create();
-
+        //Database.create();
         loadedAnimals = Database.getAnimals(null);
+        Database.close();
         for (int i = 0; i < 6; i++) {
+            if (i > loadedAnimals.size() || loadedAnimals.isEmpty())
+                break;
             names.get(i).setText(loadedAnimals.get(i).getType());
             prices.get(i).setText((String.valueOf(loadedAnimals.get(i).getPrice())));
         }
-        Database.close();
+
 
         AppState.logInWindow.close();
     }

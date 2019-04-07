@@ -21,11 +21,10 @@ public class Database {
         }
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:Zoo.s3db");
+            statement = conn.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        System.out.println("База Подключена!");
     }
 
     public static void create() {
@@ -34,12 +33,12 @@ public class Database {
             statement.execute("CREATE TABLE IF NOT EXISTS `Workers` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Username` TEXT UNIQUE,`Password` TEXT );");
             statement.execute("CREATE TABLE IF NOT EXISTS `Animals` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Type` TEXT,`Price` REAL );");
             statement.execute("CREATE TABLE IF NOT EXISTS `Receipts`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT,`Name` TEXT,`Price` REAL,`Date` TEXT,`Seller` TEXT )");
-            Database.insertData("Workers", new Object[]{"John Smith", "johnsmith", "john012"});
-            Database.insertData("Animals", new Object[]{"Cat", 156.12});
+            resSet = statement.executeQuery("Select * from Workers");
+            if (resSet.getMetaData().getColumnCount() <= 0)
+                Database.insertData("Workers", new Object[]{"John doe", "admin", "admin"});
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Таблица создана или уже существует.");
     }
 
     public static List<Animal> getAnimals(String statement) {
@@ -69,7 +68,7 @@ public class Database {
         List<Worker> workers = new ArrayList<Worker>();
         String query = "SELECT * FROM Workers";
         if (statement != null)
-            query += "WHERE " + statement;
+            query += " WHERE " + statement;
         try {
             resSet = Database.statement.executeQuery(query);
 
@@ -121,7 +120,7 @@ public class Database {
 
     public static void deleteWorker(String workerUsername) {
         try {
-            statement.execute(String.format("DELETE FROM `Workers` WHERE Username = %s;", workerUsername));
+            statement.execute(String.format("DELETE FROM `Workers` WHERE Username = '%s';", workerUsername));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -157,13 +156,14 @@ public class Database {
 
     public static void close() {
         try {
-            conn.close();
-
-            statement.close();
-            resSet.close();
+            if (conn != null)
+                conn.close();
+            if (statement != null)
+                statement.close();
+            if (resSet != null)
+                resSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Соединения закрыты");
     }
 }

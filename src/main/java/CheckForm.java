@@ -44,7 +44,7 @@ public class CheckForm {
         priceId.setText(String.valueOf(AppState.price));
 
         Database.connect();
-        Database.create();
+        //Database.create();
         Database.makeReceipt(AppState.productName, AppState.price, AppState.currentWorkerName);
         Database.close();
 
